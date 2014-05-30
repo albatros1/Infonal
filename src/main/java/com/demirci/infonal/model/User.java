@@ -3,6 +3,12 @@ package com.demirci.infonal.model;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+/**
+ * A document(entity) class which contains 
+ * the information of a single user.
+ * @author Mustafa Oðuz Demirci
+ */
+
 @Document
 public class User {
 	@Id

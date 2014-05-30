@@ -6,43 +6,13 @@
     <%@ page import="net.tanesha.recaptcha.ReCaptchaResponse" %>
 <%@ page session="false" %>
 <html>
+<link rel="stylesheet" href="../../../resources/styles.css" />
 <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css" />
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.0.min.js"></script> 
 <script type="text/javascript" src="http://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>
 <script src="https://raw.githubusercontent.com/digitalBush/jquery.maskedinput/1.3.1/dist/jquery.maskedinput.js" type="text/javascript"></script>
 <head>
 	<title>User Management</title>
-	<style>	
-	body{font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;}
-	#tableHeader{
-		font-size:1.2em;
-		text-align:left;
-		padding-top:4px;
-		padding-bottom:4px;
-		background-color:#252593;
-		color:#E8F00C;
-	}
-	#userTable{
-		width:40%;
-		border-collapse:collapse;
-	}
-	.button{
-		font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
-		padding:5px 15px; 
-		background:#ccc; 
-		border:1 none;
-    	cursor: pointer;
-	}
-	
-    #updateDialog{ font-size: 62.5%; } 
-    #deleteDialog{ font-size: 62.5%; } 
-    label, input { display:block; }
-    input.text { margin-bottom:12px; width:95%; padding: .4em; }
-    fieldset { padding:0; border:0; margin-top:25px; }
-    h1 { font-size: 1.2em; margin: .6em 0; }
-    .ui-dialog .ui-state-error { padding: .3em; }
-    .validateTips { border: 1px solid transparent; padding: 0.3em; }
-	</style>
 	<script type="text/javascript">
 
 	$(function() {

@@ -2,7 +2,6 @@ package com.demirci.infonal.controller;
 
 import javax.servlet.http.HttpServletRequest;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,7 +12,9 @@ import org.springframework.web.servlet.ModelAndView;
 import com.demirci.infonal.model.User;
 import com.demirci.infonal.service.UserService;
 
-/* Class for controlling user operations
+/*
+ * Class for declaration to obtain and modify user information
+ * @author Mustafa Oguz Demirci
  */
 
 @Controller
@@ -21,8 +22,10 @@ public class UserController {
 	@Autowired
 	private UserService userService;
 	
-	/* Method which prints users screen
-	 */
+	/**
+	    * Returns the list of users
+	    * @return The model includes user list.
+	*/
 	@RequestMapping(value = "/", method = RequestMethod.GET) 
 	public ModelAndView getUserLists(){
 		ModelAndView model = new ModelAndView("home");
@@ -31,8 +34,11 @@ public class UserController {
 		return model;
 	}	
 	
-	/* Method which adds a new user to user list
-	 */
+	/**
+	    * Adds a new user to the list.
+	    * @param request The request coming from client
+	    * @return A string includes html data 
+	*/
 	@RequestMapping(value="/add", method=RequestMethod.POST)		   
     public @ResponseBody String addUser(HttpServletRequest request){    
 	    User user = new User(request.getParameter("name"), request.getParameter("surname"), request.getParameter("telephone"));	
@@ -50,16 +56,21 @@ public class UserController {
 		return html;
 	}
 	
-	/* Method which deletes a user from user list with given id
-	 */
+	/**
+	    * Deletes the user with given identity
+	    * @param request The request coming from client
+	*/
 	@RequestMapping(value = "/delete", method = RequestMethod.GET) 
 	public @ResponseBody void deleteUser(HttpServletRequest request){
 		//User user = userService.findUser(request.getParameter("id"));
 		userService.deleteUser(request.getParameter("id"));
 	}	
 	
-	/* Method which updates the selected user
-	 */
+	/**
+	    * Updates the user with given identity
+	    * @param request The request coming from client
+	    * @return A string includes html data 
+	*/
 	@RequestMapping(value = "/update", method = RequestMethod.GET) 
 	public @ResponseBody String updateUser(HttpServletRequest request){
 		String id = request.getParameter("id");

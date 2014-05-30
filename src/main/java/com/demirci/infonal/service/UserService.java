@@ -13,18 +13,22 @@ import com.mongodb.DB;
 import com.mongodb.DBCollection;
 
 /*
- * Class for management of user database
+ * Class for declaration to obtain and modify user information
+ * @author Mustafa Oguz Demirci
  */
 
 @Repository
 public class UserService {
 	@Autowired
     private MongoTemplate mongoTemplate;
-	
      
     public static final String COLLECTION_NAME = "User";
      
-    //Method for adding user to the database
+    /**
+    * Adds a new user to database.
+    * @param user The information of the created person.
+    * @return  The created person.
+    */
     public User addUser(User user) {
         if (!mongoTemplate.collectionExists(User.class)) {
             mongoTemplate.createCollection(User.class);
@@ -35,12 +39,19 @@ public class UserService {
       	return user;
     }
      
-    //Method for selecting all users from database
+    /**
+     * Selects all users from database.
+     * @return  List of users.
+     */
     public List<User> listUser() {
         return mongoTemplate.findAll(User.class, COLLECTION_NAME);
     }
      
-  //Method for deleting user with given id
+    /**
+     * Deletes a user from database.
+     * @param id The identity of the user on database.
+     * @return  The created person.
+     */
     public void deleteUser(String id) {
     	System.out.println("DELETE");
     	DB db = mongoTemplate.getDb();
@@ -50,7 +61,13 @@ public class UserService {
         //mongoTemplate.remove(user, COLLECTION_NAME);
     }
      
-  //Method for updating user with given id, name, surname and telephone
+    /**
+     * Updates a user on database.
+     * @param id The identity of the user
+     * @param name The name of the user.
+     * @param surname The surname of the user.
+     * @param telephone The telephone of the user.
+     */
     public void updateUser(String id, String name, String surname, String telephone) {
     	System.out.println("UPDATE");
     	DB db = mongoTemplate.getDb();
